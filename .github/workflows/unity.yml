@@ -12,6 +12,10 @@ on:
       - "unity/**"
       - ".github/workflows/unity.yml"
 
+concurrency:
+  group: unity-validation-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   unity-6000-3:
     runs-on: [self-hosted, macOS, ARM64, unity-6000.3]
