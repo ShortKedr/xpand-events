@@ -1,0 +1,27 @@
+#nullable enable
+Xpand.Events.Testing.AsyncSignalProbe<T>
+Xpand.Events.Testing.AsyncSignalProbe<T>.AsyncSignalProbe() -> void
+Xpand.Events.Testing.AsyncSignalProbe<T>.Count.get -> int
+Xpand.Events.Testing.AsyncSignalProbe<T>.Handler.get -> Xpand.Events.Async.AsyncSignalHandler<T>!
+Xpand.Events.Testing.AsyncSignalProbe<T>.Reset() -> void
+Xpand.Events.Testing.AsyncSignalProbe<T>.Snapshot() -> T[]!
+Xpand.Events.Testing.AsyncSignalProbe<T>.SubscribeTo(Xpand.Events.Async.AsyncSignal<T>! signal, int priority = 0) -> System.IDisposable!
+Xpand.Events.Testing.InvocationLog
+Xpand.Events.Testing.InvocationLog.Handler(string! name) -> System.Action!
+Xpand.Events.Testing.InvocationLog.Handler<T>(System.Func<T, string!>! formatter) -> System.Action<T>!
+Xpand.Events.Testing.InvocationLog.InvocationLog() -> void
+Xpand.Events.Testing.InvocationLog.Reset() -> void
+Xpand.Events.Testing.InvocationLog.Snapshot() -> string![]!
+Xpand.Events.Testing.SignalProbe
+Xpand.Events.Testing.SignalProbe.Count.get -> int
+Xpand.Events.Testing.SignalProbe.Handler.get -> System.Action!
+Xpand.Events.Testing.SignalProbe.Reset() -> void
+Xpand.Events.Testing.SignalProbe.SignalProbe() -> void
+Xpand.Events.Testing.SignalProbe.SubscribeTo(Xpand.Events.Signal! signal, int priority = 0) -> System.IDisposable!
+Xpand.Events.Testing.SignalProbe<T>
+Xpand.Events.Testing.SignalProbe<T>.Count.get -> int
+Xpand.Events.Testing.SignalProbe<T>.Handler.get -> System.Action<T>!
+Xpand.Events.Testing.SignalProbe<T>.Reset() -> void
+Xpand.Events.Testing.SignalProbe<T>.SignalProbe() -> void
+Xpand.Events.Testing.SignalProbe<T>.Snapshot() -> T[]!
+Xpand.Events.Testing.SignalProbe<T>.SubscribeTo(Xpand.Events.Signal<T>! signal, int priority = 0) -> System.IDisposable!

@@ -4,7 +4,7 @@
         <StartupObject>Xpand.Events.Examples.RunAll</StartupObject>
         <Authors>Nikolay Nakorkeshko</Authors>
         <LangVersion>9</LangVersion>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <IsPackable>false</IsPackable>
     </PropertyGroup>

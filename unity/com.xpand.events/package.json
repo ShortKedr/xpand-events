@@ -1,0 +1,25 @@
+{
+  "name": "com.xpand.events",
+  "version": "1.0.0-rc.1",
+  "displayName": "Xpand Events",
+  "description": "Deterministic in-process signals with explicit Unity lifecycle and main-thread integration.",
+  "unity": "6000.3",
+  "license": "BSD-2-Clause",
+  "keywords": [
+    "events",
+    "signals",
+    "messaging",
+    "unity"
+  ],
+  "author": {
+    "name": "Nikolay Nakorkeshko",
+    "url": "https://github.com/ShortKedr/xpand-events"
+  },
+  "samples": [
+    {
+      "displayName": "Signals and lifecycle",
+      "description": "Gameplay, UI, lifecycle disposal, ordering, and exception-policy examples.",
+      "path": "Samples~/SignalsAndLifecycle"
+    }
+  ]
+}

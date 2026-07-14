@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using ClassicAssert = NUnit.Framework.Legacy.ClassicAssert;
 
 namespace Xpand.Events.Tests {
     [TestFixture]
@@ -14,7 +15,7 @@ namespace Xpand.Events.Tests {
             bool con1 = ev.Contains(listener);
             bool rem = ev.RemoveListener(listener);
             bool con2 = ev.Contains(listener);
-            Assert.IsTrue(wasCalled && con1 && rem && !con2);
+            ClassicAssert.IsTrue(wasCalled && con1 && rem && !con2);
         }
         
         [Test]
@@ -23,16 +24,27 @@ namespace Xpand.Events.Tests {
             Event listener = () => {};
             bool a1 = ev.AddListener(listener);
             bool a2 = ev.AddListener(listener);
-            Assert.IsTrue(a1 && !a2);
+            ClassicAssert.IsTrue(a1 && !a2);
         }
 
         [Test]
-        public void NullSafeInvoke() {
-            //TODO use listener from external dll, dealloc it before use
+        public void AddListenerRejectsNullWithoutChangingSubscriptions() {
             SafeXEvent ev = new SafeXEvent();
-            ev.AddListener(null);
-            ev.Invoke();
-            Assert.IsTrue(ev.GetImmutableSubscriptionArray().Length == 0);
+
+            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(new Action(() => ev.AddListener(null)));
+
+            ClassicAssert.AreEqual("listener", exception.ParamName);
+            ClassicAssert.AreEqual(0, ev.GetImmutableSubscriptionArray().Length);
+        }
+
+        [Test]
+        public void GenericAddListenerRejectsNullWithoutChangingSubscriptions() {
+            SafeXEvent<int> ev = new SafeXEvent<int>();
+
+            ArgumentNullException exception = Assert.Throws<ArgumentNullException>(new Action(() => ev.AddListener(null)));
+
+            ClassicAssert.AreEqual("listener", exception.ParamName);
+            ClassicAssert.AreEqual(0, ev.Count);
         }
 
         [Test]
@@ -43,7 +55,7 @@ namespace Xpand.Events.Tests {
             ev.AddListener(listener);
             ev.Suspend();
             ev.Invoke();
-            Assert.IsTrue(!wasCalled);
+            ClassicAssert.IsTrue(!wasCalled);
         }
         
         [Test]
@@ -54,7 +66,7 @@ namespace Xpand.Events.Tests {
             ev.AddListener(listener);
             ev.Unsuspend();
             ev.Invoke();
-            Assert.IsTrue(wasCalled);
+            ClassicAssert.IsTrue(wasCalled);
         }
 
         [Test]
@@ -86,7 +98,7 @@ namespace Xpand.Events.Tests {
             ev.Invoke();
             XEventLogger.Exception -= offExListener;
             
-            Assert.IsTrue(wasOnCalled && !wasOffCalled);
+            ClassicAssert.IsTrue(wasOnCalled && !wasOffCalled);
         }
 
         [Test]
@@ -102,7 +114,7 @@ namespace Xpand.Events.Tests {
             ev.Invoke();
             XEventLogger.ImplicitException -= exListener;
             
-            Assert.IsTrue(wasCalled);
+            ClassicAssert.IsTrue(wasCalled);
         }
     }
 }

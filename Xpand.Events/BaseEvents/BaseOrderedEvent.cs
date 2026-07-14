@@ -6,17 +6,32 @@ using Xpand.Events.Interfaces;
 
 namespace Xpand.Events {
     public abstract class BaseOrderedEvent<T> : ISuspendable where T : Delegate {
+
+        private sealed class DescendingPriorityComparer : IComparer<int> {
+            public static readonly DescendingPriorityComparer Instance = new DescendingPriorityComparer();
+
+            public int Compare(int left, int right) {
+                return right.CompareTo(left);
+            }
+        }
         
         private SortedList<int, List<T>> _subscriptions;
         private Dictionary<T, int> _orderBySubscriptionDict;
         private bool _isSuspended;
 
         
+        /// <summary>
+        /// Gets the number of registered listeners.
+        /// </summary>
+        public int Count => _orderBySubscriptionDict.Count;
+
         public bool IsSuspended => _isSuspended;
 
         
         public BaseOrderedEvent() {
-            _subscriptions = new SortedList<int, List<T>>(XpandEventsConfig.DefaultSubscriptionsBuffer);
+            _subscriptions = new SortedList<int, List<T>>(DescendingPriorityComparer.Instance) {
+                Capacity = XpandEventsConfig.DefaultSubscriptionsBuffer
+            };
             _orderBySubscriptionDict = new Dictionary<T, int>(XpandEventsConfig.DefaultSubscriptionsBuffer);
             _isSuspended = false;
         }
@@ -26,18 +41,17 @@ namespace Xpand.Events {
         /// Priority is optional param, so default priority equals to 0.
         /// Higher the priority, closer the listener to invoke in the invocation queue.
         /// Listeners with same priority value invokes in order they was added to the event.
-        /// Null reference listeners can't be added to the ordered event, method will returns False this way.
+        /// Null listeners are rejected with <see cref="ArgumentNullException"/>.
         /// </summary>
         /// <param name="listener">listener</param>
         /// <param name="priority">invocation priority</param>
         /// <returns>true if listener was added</returns>
         public bool AddListener(T listener, int priority = 0) {
-            if (listener == null) return false;
+            if (listener == null) throw new ArgumentNullException(nameof(listener));
             if (_orderBySubscriptionDict.ContainsKey(listener)) return false;
-            int order = ComputeOrderByPriority(priority);
-            if (!_subscriptions.ContainsKey(order)) _subscriptions.Add(order, new List<T>(XpandEventsConfig.DefaultSubscriptionsBuffer));
-            _subscriptions[order].Add(listener);
-            _orderBySubscriptionDict.Add(listener, order);
+            if (!_subscriptions.ContainsKey(priority)) _subscriptions.Add(priority, new List<T>(XpandEventsConfig.DefaultSubscriptionsBuffer));
+            _subscriptions[priority].Add(listener);
+            _orderBySubscriptionDict.Add(listener, priority);
             return true;
         }
 
@@ -50,6 +64,14 @@ namespace Xpand.Events {
         
         public bool Contains(T listener) {
             return _orderBySubscriptionDict.ContainsKey(listener);
+        }
+
+        /// <summary>
+        /// Removes all registered listeners.
+        /// </summary>
+        public void Clear() {
+            _subscriptions.Clear();
+            _orderBySubscriptionDict.Clear();
         }
 
         public void Suspend() {
@@ -79,23 +101,6 @@ namespace Xpand.Events {
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void PrepareInvoke() {
-            RemoveNullSubscriptions();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void RemoveNullSubscriptions() {
-            IList<List<T>> orderLists = _subscriptions.Values;
-            for (int i = 0; i < orderLists.Count; i++) {
-                List<T> list = orderLists[i];
-                for (int j = list.Count - 1; j >= 0; j--) {
-                    if (list[j] == null) list.RemoveAt(j);
-                }
-            }
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private int ComputeOrderByPriority(int priority) {
-            return int.MaxValue - priority;
         }
 
     }

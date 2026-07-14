@@ -1,0 +1,16 @@
+{
+  "name": "Xpand.Events.Unity",
+  "rootNamespace": "Xpand.Events.Unity",
+  "references": [
+    "Xpand.Events.Core"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

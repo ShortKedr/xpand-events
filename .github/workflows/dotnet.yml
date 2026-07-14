@@ -1,25 +1,86 @@
-name: .NET
+name: CI
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_NOLOGO: true
+
 jobs:
   build:
+    name: Build and test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore Xpand-Events.sln
+
+    - name: Build
+      run: dotnet build Xpand-Events.sln --no-restore --configuration Release
+
+    - name: Test
+      run: dotnet test Xpand.Events.Tests/Xpand.Events.Tests.csproj --no-restore --no-build --configuration Release --verbosity normal
+
+    - name: Pack
+      run: dotnet pack Xpand-Events.sln --no-restore --no-build --configuration Release --output artifacts
+
+    - name: Upload package
+      uses: actions/upload-artifact@v6
+      with:
+        name: packages-${{ runner.os }}
+        path: |
+          artifacts/*.nupkg
+          artifacts/*.snupkg
+        if-no-files-found: error
+        retention-days: 7
+
+  smoke:
+    name: Trimming and Native AOT smoke tests
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v6
+
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 5.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore --configuration Release
-    - name: Test
-      run: dotnet test --configuration Release --no-build --verbosity normal 
+        dotnet-version: 8.0.x
+
+    - name: Verify release preparation
+      run: bash scripts/test-prepare-release.sh
+
+    - name: Verify RC-to-stable upgrade
+      run: bash scripts/test-stable-upgrade.sh
+
+    - name: Publish trimmed smoke test
+      run: dotnet publish smoke/Xpand.Events.TrimSmokeTest/Xpand.Events.TrimSmokeTest.csproj --configuration Release --runtime linux-x64 --self-contained true --output artifacts/trimmed
+
+    - name: Run trimmed smoke test
+      run: ./artifacts/trimmed/Xpand.Events.TrimSmokeTest
+
+    - name: Publish Native AOT smoke test
+      run: dotnet publish smoke/Xpand.Events.AotSmokeTest/Xpand.Events.AotSmokeTest.csproj --configuration Release --runtime linux-x64 --output artifacts/aot
+
+    - name: Run Native AOT smoke test
+      run: ./artifacts/aot/Xpand.Events.AotSmokeTest

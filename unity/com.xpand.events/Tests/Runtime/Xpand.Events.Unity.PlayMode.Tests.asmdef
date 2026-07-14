@@ -1,0 +1,20 @@
+{
+  "name": "Xpand.Events.Unity.PlayMode.Tests",
+  "rootNamespace": "Xpand.Events.Unity.Tests",
+  "references": [
+    "Xpand.Events.Core",
+    "Xpand.Events.Unity"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

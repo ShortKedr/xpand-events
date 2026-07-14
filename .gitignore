@@ -79,6 +79,7 @@ StyleCopReport.xml
 *_h.h
 *.ilk
 *.meta
+!unity/**/*.meta
 *.obj
 *.iobj
 *.pch
@@ -205,6 +206,8 @@ PublishScripts/
 **/[Pp]ackages/*
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
+!unity/ValidationProject/Packages/manifest.json
+!unity/ValidationProject/Packages/packages-lock.json
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/[Pp]ackages/repositories.config
 # NuGet v3's project.json files produces more ignorable files
@@ -224,6 +227,14 @@ AppPackages/
 BundleArtifacts/
 Package.StoreAssociation.xml
 _pkginfo.txt
+
+# Unity validation project generated state
+unity/ValidationProject/[Ll]ibrary/
+unity/ValidationProject/[Tt]emp/
+unity/ValidationProject/[Ll]ogs/
+unity/ValidationProject/[Uu]ser[Ss]ettings/
+unity/ValidationProject/[Bb]uild/
+unity/ValidationProject/[Bb]uilds/
 *.appx
 *.appxbundle
 *.appxupload
@@ -486,4 +497,3 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 # End of https://www.toptal.com/developers/gitignore/api/rider
-

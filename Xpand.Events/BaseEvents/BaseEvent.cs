@@ -15,6 +15,11 @@ namespace Xpand.Events {
         private bool _isSuspended;
         
         
+        /// <summary>
+        /// Gets the number of registered listeners.
+        /// </summary>
+        public int Count => _subscriptionsCache.Count;
+
         public bool IsSuspended => _isSuspended;
 
         
@@ -25,6 +30,7 @@ namespace Xpand.Events {
         }
 
         public bool AddListener(T listener) {
+            if (listener == null) throw new ArgumentNullException(nameof(listener));
             if (_subscriptionsCache.Contains(listener)) return false;
             _subscriptions.Add(listener);
             _subscriptionsCache.Add(listener);
@@ -39,6 +45,14 @@ namespace Xpand.Events {
 
         public bool Contains(T listener) {
             return _subscriptionsCache.Contains(listener);
+        }
+
+        /// <summary>
+        /// Removes all registered listeners.
+        /// </summary>
+        public void Clear() {
+            _subscriptions.Clear();
+            _subscriptionsCache.Clear();
         }
 
         public void Suspend() {
@@ -56,14 +70,6 @@ namespace Xpand.Events {
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void PrepareInvoke() {
-            RemoveNullSubscriptions();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void RemoveNullSubscriptions() {
-            for (int i = _subscriptions.Count-1; i >= 0; i--) {
-                if (_subscriptions[i] == null) _subscriptions.RemoveAt(i);
-            }
         }
 
     }

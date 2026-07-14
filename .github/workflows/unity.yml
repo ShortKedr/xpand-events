@@ -1,0 +1,97 @@
+name: Unity validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master, main]
+    paths:
+      - "unity/**"
+      - ".github/workflows/unity.yml"
+  pull_request:
+    paths:
+      - "unity/**"
+      - ".github/workflows/unity.yml"
+
+concurrency:
+  group: unity-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  unity-6000-3:
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, macOS, ARM64, unity-6000.3]
+    timeout-minutes: 90
+    env:
+      UNITY: /Applications/Unity/Hub/Editor/6000.3.19f1/Unity.app/Contents/MacOS/Unity
+      PROJECT: ${{ github.workspace }}/unity/ValidationProject
+      RESULTS: ${{ github.workspace }}/artifacts/xpand-events-unity
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Prepare results directory
+        run: mkdir -p "$(dirname "$RESULTS")"
+
+      - name: Edit Mode tests
+        run: >-
+          "$UNITY" -batchmode -nographics -projectPath "$PROJECT"
+          -runTests -testPlatform EditMode
+          -testResults "$RESULTS-editmode.xml"
+          -logFile "$RESULTS-editmode.log"
+
+      - name: Play Mode tests with domain reload
+        run: |
+          "$UNITY" -batchmode -nographics -quit -projectPath "$PROJECT" -executeMethod ValidationCommands.EnableDomainReload -logFile "$RESULTS-enable-domain-reload.log"
+          "$UNITY" -batchmode -nographics -projectPath "$PROJECT" -runTests -testPlatform PlayMode -testResults "$RESULTS-playmode-domain-reload.xml" -logFile "$RESULTS-playmode-domain-reload.log"
+
+      - name: Play Mode tests without domain reload
+        run: |
+          "$UNITY" -batchmode -nographics -quit -projectPath "$PROJECT" -executeMethod ValidationCommands.DisableDomainReload -logFile "$RESULTS-disable-domain-reload.log"
+          "$UNITY" -batchmode -nographics -projectPath "$PROJECT" -runTests -testPlatform PlayMode -testResults "$RESULTS-playmode-no-domain-reload.xml" -logFile "$RESULTS-playmode-no-domain-reload.log"
+
+      - name: Build macOS Mono player
+        run: >-
+          "$UNITY" -batchmode -nographics -quit -projectPath "$PROJECT"
+          -executeMethod ValidationCommands.BuildMacMono -xpandOutput "$RESULTS-builds"
+          -logFile "$RESULTS-build-mac-mono.log"
+
+      - name: Run macOS Mono smoke
+        run: >-
+          "$RESULTS-builds/mac-mono/XpandEvents.app/Contents/MacOS/ValidationProject"
+          -batchmode -nographics -logFile "$RESULTS-player-mac-mono.log"
+
+      - name: Build macOS IL2CPP player
+        run: >-
+          "$UNITY" -batchmode -nographics -quit -projectPath "$PROJECT"
+          -executeMethod ValidationCommands.BuildMacIl2Cpp -xpandOutput "$RESULTS-builds"
+          -logFile "$RESULTS-build-mac-il2cpp.log"
+
+      - name: Run macOS IL2CPP smoke
+        run: >-
+          "$RESULTS-builds/mac-il2cpp/XpandEvents.app/Contents/MacOS/ValidationProject"
+          -batchmode -nographics -logFile "$RESULTS-player-mac-il2cpp.log"
+
+      - name: Verify player markers
+        run: |
+          grep -F "XPAND_EVENTS_PLAYER_SMOKE_PASSED" "$RESULTS-player-mac-mono.log"
+          grep -F "allocatedBytes=0" "$RESULTS-player-mac-mono.log"
+          grep -F "XPAND_EVENTS_PLAYER_SMOKE_PASSED" "$RESULTS-player-mac-il2cpp.log"
+
+      - name: Build Android ARM64 IL2CPP and WebGL
+        run: |
+          "$UNITY" -batchmode -nographics -quit -projectPath "$PROJECT" -executeMethod ValidationCommands.BuildAndroidIl2Cpp -xpandOutput "$RESULTS-builds" -logFile "$RESULTS-build-android.log"
+          "$UNITY" -batchmode -nographics -quit -projectPath "$PROJECT" -executeMethod ValidationCommands.BuildWebGl -xpandOutput "$RESULTS-builds" -logFile "$RESULTS-build-webgl.log"
+
+      - name: Upload Unity logs and test results
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: unity-6000.3-validation
+          path: ${{ github.workspace }}/artifacts/xpand-events-unity*
+          if-no-files-found: warn
