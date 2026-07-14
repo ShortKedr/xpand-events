@@ -19,9 +19,12 @@ jobs:
     env:
       UNITY: /Applications/Unity/Hub/Editor/6000.3.19f1/Unity.app/Contents/MacOS/Unity
       PROJECT: ${{ github.workspace }}/unity/ValidationProject
-      RESULTS: ${{ runner.temp }}/xpand-events-unity
+      RESULTS: ${{ github.workspace }}/artifacts/xpand-events-unity
     steps:
       - uses: actions/checkout@v6
+
+      - name: Prepare results directory
+        run: mkdir -p "$(dirname "$RESULTS")"
 
       - name: Edit Mode tests
         run: >-
@@ -78,5 +81,5 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: unity-6000.3-validation
-          path: ${{ runner.temp }}/xpand-events-unity*
+          path: ${{ github.workspace }}/artifacts/xpand-events-unity*
           if-no-files-found: warn
