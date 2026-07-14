@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>rc.1</VersionSuffix>
+    <IsPackable>true</IsPackable>
+    <Authors>Nikolay Nakorkeshko</Authors>
+    <Title>Xpand Events Testing</Title>
+    <Description>Framework-neutral deterministic handler probes for Xpand Events signals.</Description>
+    <PackageProjectUrl>https://github.com/ShortKedr/xpand-events</PackageProjectUrl>
+    <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>xpand-events-icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/ShortKedr/xpand-events</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageTags>events;signals;testing;test-double;probe</PackageTags>
+    <PackageReleaseNotes>Xpand Events 1.0 release-candidate deterministic testing helpers.</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <WarningsAsErrors>$(WarningsAsErrors);RS0016;RS0017</WarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Xpand.Events.Core\Xpand.Events.Core.csproj" />
+    <ProjectReference Include="..\Xpand.Events.Async\Xpand.Events.Async.csproj" />
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\assets\xpand-events-icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

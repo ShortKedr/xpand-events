@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "com.unity.test-framework": "1.6.0",
+    "com.xpand.events": "file:../../com.xpand.events"
+  },
+  "testables": [
+    "com.xpand.events"
+  ]
+}

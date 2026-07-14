@@ -1,0 +1,14 @@
+#nullable enable
+static Xpand.Events.Async.AsyncSignalOptions.FailFast.get -> Xpand.Events.Async.AsyncSignalOptions!
+static Xpand.Events.Async.AsyncSignalOptions.ReportAndContinue(System.Func<System.Exception!, System.Threading.CancellationToken, System.Threading.Tasks.ValueTask>! exceptionSink) -> Xpand.Events.Async.AsyncSignalOptions!
+Xpand.Events.Async.AsyncSignal<T>
+Xpand.Events.Async.AsyncSignal<T>.AsyncSignal() -> void
+Xpand.Events.Async.AsyncSignal<T>.AsyncSignal(Xpand.Events.Async.AsyncSignalOptions! options) -> void
+Xpand.Events.Async.AsyncSignal<T>.Clear() -> void
+Xpand.Events.Async.AsyncSignal<T>.Count.get -> int
+Xpand.Events.Async.AsyncSignal<T>.IsSuspended.get -> bool
+Xpand.Events.Async.AsyncSignal<T>.PublishAsync(T payload, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask
+Xpand.Events.Async.AsyncSignal<T>.Subscribe(Xpand.Events.Async.AsyncSignalHandler<T>! handler, int priority = 0) -> System.IDisposable!
+Xpand.Events.Async.AsyncSignal<T>.Suspend() -> System.IDisposable!
+Xpand.Events.Async.AsyncSignalHandler<T>
+Xpand.Events.Async.AsyncSignalOptions

@@ -1,0 +1,22 @@
+#nullable enable
+static Xpand.Events.SignalOptions.FailFast.get -> Xpand.Events.SignalOptions!
+static Xpand.Events.SignalOptions.ReportAndContinue(System.Action<System.Exception!>! exceptionSink) -> Xpand.Events.SignalOptions!
+Xpand.Events.Signal
+Xpand.Events.Signal.Clear() -> void
+Xpand.Events.Signal.Count.get -> int
+Xpand.Events.Signal.IsSuspended.get -> bool
+Xpand.Events.Signal.Publish() -> void
+Xpand.Events.Signal.Signal() -> void
+Xpand.Events.Signal.Signal(Xpand.Events.SignalOptions! options) -> void
+Xpand.Events.Signal.Subscribe(System.Action! handler, int priority = 0) -> System.IDisposable!
+Xpand.Events.Signal.Suspend() -> System.IDisposable!
+Xpand.Events.Signal<T>
+Xpand.Events.Signal<T>.Clear() -> void
+Xpand.Events.Signal<T>.Count.get -> int
+Xpand.Events.Signal<T>.IsSuspended.get -> bool
+Xpand.Events.Signal<T>.Publish(T payload) -> void
+Xpand.Events.Signal<T>.Signal() -> void
+Xpand.Events.Signal<T>.Signal(Xpand.Events.SignalOptions! options) -> void
+Xpand.Events.Signal<T>.Subscribe(System.Action<T>! handler, int priority = 0) -> System.IDisposable!
+Xpand.Events.Signal<T>.Suspend() -> System.IDisposable!
+Xpand.Events.SignalOptions

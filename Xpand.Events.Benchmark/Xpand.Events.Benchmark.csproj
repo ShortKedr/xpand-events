@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+        <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <LangVersion>7.3</LangVersion>
         <IsPackable>false</IsPackable>
@@ -12,11 +12,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="BenchmarkDotNet" Version="0.13.2" />
+      <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Xpand.Events\Xpand.Events.csproj" />
+        <ProjectReference Include="..\Xpand.Events.Core\Xpand.Events.Core.csproj" />
     </ItemGroup>
     
 </Project>

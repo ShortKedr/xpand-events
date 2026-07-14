@@ -1,21 +1,36 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TransformOnBuild>true</TransformOnBuild>
         <Authors>Nikolay Nakorkeshko</Authors>
         <LangVersion>8</LangVersion>
-        <TargetFrameworks>net471;netstandard2.0</TargetFrameworks>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>0.01</PackageVersion>
-        <Title>Xpand Events</Title>
-        <Description>.NET event library. Alternative for default events. Part of Xpand project</Description>
-        <Copyright>Nikolay Nakorkeshko 2022</Copyright>
-        <PackageProjectUrl>https://github.com/ShortKedr-OpenSource/xpand-events</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/ShortKedr-OpenSource/xpand-events/blob/main/LICENSE</PackageLicenseUrl>
-        <RepositoryUrl>https://github.com/ShortKedr-OpenSource/xpand-events</RepositoryUrl>
+        <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionSuffix>rc.1</VersionSuffix>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <IsPackable>true</IsPackable>
+        <Title>Xpand Events Legacy Compatibility</Title>
+        <Description>Compatibility package for the experimental legacy XEvent API. New code should use Xpand.Events.Core.</Description>
+        <Copyright>Copyright (c) 2025 Nikolay Nakorkeshko</Copyright>
+        <PackageProjectUrl>https://github.com/ShortKedr/xpand-events</PackageProjectUrl>
+        <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>xpand-events-icon.png</PackageIcon>
+        <RepositoryUrl>https://github.com/ShortKedr/xpand-events</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
-        <PackageTags>Events</PackageTags>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+        <EnablePackageValidation>true</EnablePackageValidation>
+        <EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <!-- Legacy delegates predate nullable metadata; preserve the compatibility facade as oblivious. -->
+        <NoWarn>$(NoWarn);CS1591;RS0041</NoWarn>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageTags>events;signals;in-process;unity</PackageTags>
+        <PackageReleaseNotes>Xpand Events 1.0 release-candidate compatibility facade for migration from XEvent to Signal.</PackageReleaseNotes>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <WarningsAsErrors>$(WarningsAsErrors);RS0016;RS0017</WarningsAsErrors>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -23,56 +38,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="Generated\XEvent.tt">
-        <Generator>TextTemplatingFileGenerator</Generator>
-        <LastGenOutput>XEvent.cs</LastGenOutput>
-      </None>
-      <None Update="Generated\SafeXEvent.tt">
-        <Generator>TextTemplatingFileGenerator</Generator>
-        <LastGenOutput>SafeXEvent.cs</LastGenOutput>
-      </None>
-      <None Update="Generated\EventDelegate.tt">
-        <Generator>TextTemplatingFileGenerator</Generator>
-        <LastGenOutput>EventDelegate.cs</LastGenOutput>
-      </None>
-      <None Update="Generated\OrderedXEvent.tt">
-        <Generator>TextTemplatingFileGenerator</Generator>
-        <LastGenOutput>OrderedXEvent.cs</LastGenOutput>
-      </None>
-      <None Update="Generated\SafeOrderedXEvent.tt">
-        <Generator>TextTemplatingFileGenerator</Generator>
-        <LastGenOutput>SafeOrderedXEvent.cs</LastGenOutput>
-      </None>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Generated\EventDelegate.cs">
-        <DependentUpon>EventDelegate.tt</DependentUpon>
-      </Compile>
-      <Compile Update="Generated\XEvent.cs">
-        <AutoGen>True</AutoGen>
-        <DesignTime>True</DesignTime>
-        <DependentUpon>XEvent.tt</DependentUpon>
-      </Compile>
-      <Compile Update="Generated\SafeXEvent.cs">
-        <AutoGen>True</AutoGen>
-        <DesignTime>True</DesignTime>
-        <DependentUpon>SafeXEvent.tt</DependentUpon>
-      </Compile>
-      <Compile Update="Generated\SafeOrderedXEvent.cs">
-        <AutoGen>True</AutoGen>
-        <DesignTime>True</DesignTime>
-        <DependentUpon>SafeOrderedXEvent.tt</DependentUpon>
-      </Compile>
-      <Compile Update="Generated\OrderedXEvent.cs">
-        <AutoGen>True</AutoGen>
-        <DesignTime>True</DesignTime>
-        <DependentUpon>OrderedXEvent.tt</DependentUpon>
-      </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
+      <None Include="..\README.md" Pack="true" PackagePath="\" />
+      <None Include="..\assets\xpand-events-icon.png" Pack="true" PackagePath="\" />
       <Folder Include="Aliases" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Xpand.Events.Core\Xpand.Events.Core.csproj" />
+      <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
+      <ApiCompatSuppressionFile Include="CompatibilitySuppressions.xml" />
     </ItemGroup>
 
 </Project>

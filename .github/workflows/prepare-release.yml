@@ -1,0 +1,50 @@
+name: Prepare release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: SemVer without v prefix, for example 1.0.0-rc.1
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main with tags
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Prepare versions and changelogs
+        run: scripts/prepare-release.sh "${{ inputs.version }}"
+
+      - name: Create release pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          branch="release/v$VERSION"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add CHANGELOG.md unity/com.xpand.events/CHANGELOG.md unity/com.xpand.events/package.json \
+            Xpand.Events/Xpand.Events.csproj Xpand.Events.Core/Xpand.Events.Core.csproj \
+            Xpand.Events.Async/Xpand.Events.Async.csproj \
+            Xpand.Events.Extensions.Microsoft/Xpand.Events.Extensions.Microsoft.csproj \
+            Xpand.Events.Testing/Xpand.Events.Testing.csproj \
+            Xpand.Events.Analyzers/Xpand.Events.Analyzers.csproj
+          git commit -m "Prepare v$VERSION"
+          git push --set-upstream origin "$branch"
+          gh pr create --base main --head "$branch" --title "Prepare v$VERSION" \
+            --body "Automated version and changelog preparation for v$VERSION. Publishing still requires review, green validation, merge, and an authorized annotated tag."

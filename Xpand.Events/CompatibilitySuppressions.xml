@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://learn.microsoft.com/dotnet/fundamentals/package-validation/diagnostic-ids -->
+<Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Suppression>
+    <!-- System.Enum implements ISpanFormattable on net8.0 but not netstandard2.0;
+         the declared legacy enum API is identical in both assemblies. -->
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Xpand.Events.LogLevel</Target>
+    <Left>lib/netstandard2.0/Xpand.Events.dll</Left>
+    <Right>lib/net8.0/Xpand.Events.dll</Right>
+  </Suppression>
+</Suppressions>

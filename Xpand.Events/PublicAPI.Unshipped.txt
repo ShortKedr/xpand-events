@@ -1,0 +1,272 @@
+#nullable enable
+static Xpand.Events.XEventLogger.Exception -> Xpand.Events.XEventLogger.ExceptionDelegate
+static Xpand.Events.XEventLogger.ImplicitException -> Xpand.Events.XEventLogger.ExceptionDelegate
+static Xpand.Events.XEventLogger.ImplicitInfo -> Xpand.Events.XEventLogger.MessageDelegate
+static Xpand.Events.XEventLogger.ImplicitWarning -> Xpand.Events.XEventLogger.MessageDelegate
+static Xpand.Events.XEventLogger.Info -> Xpand.Events.XEventLogger.MessageDelegate
+static Xpand.Events.XEventLogger.Warning -> Xpand.Events.XEventLogger.MessageDelegate
+static Xpand.Events.XpandEventsConfig.LogLevel -> Xpand.Events.LogLevel
+Xpand.Events.BaseEvent<T>.BaseEvent() -> void
+Xpand.Events.BaseEvent<T>.Clear() -> void
+Xpand.Events.BaseEvent<T>.Count.get -> int
+Xpand.Events.BaseEvent<T>.IsSuspended.get -> bool
+Xpand.Events.BaseEvent<T>.PrepareInvoke() -> void
+Xpand.Events.BaseEvent<T>.Suspend() -> void
+Xpand.Events.BaseEvent<T>.Unsuspend() -> void
+Xpand.Events.BaseOrderedEvent<T>.BaseOrderedEvent() -> void
+Xpand.Events.BaseOrderedEvent<T>.Clear() -> void
+Xpand.Events.BaseOrderedEvent<T>.Count.get -> int
+Xpand.Events.BaseOrderedEvent<T>.IsSuspended.get -> bool
+Xpand.Events.BaseOrderedEvent<T>.PrepareInvoke() -> void
+Xpand.Events.BaseOrderedEvent<T>.Suspend() -> void
+Xpand.Events.BaseOrderedEvent<T>.Unsuspend() -> void
+Xpand.Events.Event
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6, T7, T8, T9>
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6, T7, T8>
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6, T7>
+Xpand.Events.Event<T1, T2, T3, T4, T5, T6>
+Xpand.Events.Event<T1, T2, T3, T4, T5>
+Xpand.Events.Event<T1, T2, T3, T4>
+Xpand.Events.Event<T1, T2, T3>
+Xpand.Events.Event<T1, T2>
+Xpand.Events.Event<T>
+Xpand.Events.EventArgs
+Xpand.Events.EventArgs.EventArgs() -> void
+Xpand.Events.Interfaces.ISuspendable
+Xpand.Events.Interfaces.ISuspendable.IsSuspended.get -> bool
+Xpand.Events.Interfaces.ISuspendable.Suspend() -> void
+Xpand.Events.Interfaces.ISuspendable.Unsuspend() -> void
+Xpand.Events.LogLevel
+Xpand.Events.LogLevel.Exception = 3 -> Xpand.Events.LogLevel
+Xpand.Events.LogLevel.Info = 1 -> Xpand.Events.LogLevel
+Xpand.Events.LogLevel.None = 0 -> Xpand.Events.LogLevel
+Xpand.Events.LogLevel.Warning = 2 -> Xpand.Events.LogLevel
+Xpand.Events.OrderedXEvent
+Xpand.Events.OrderedXEvent.Invoke() -> void
+Xpand.Events.OrderedXEvent.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14, T15 value15, T16 value16) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14, T15 value15) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6, T7>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5, T6>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4, T5>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4>
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3, T4>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3>
+Xpand.Events.OrderedXEvent<T1, T2, T3>.Invoke(T1 value1, T2 value2, T3 value3) -> void
+Xpand.Events.OrderedXEvent<T1, T2, T3>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T1, T2>
+Xpand.Events.OrderedXEvent<T1, T2>.Invoke(T1 value1, T2 value2) -> void
+Xpand.Events.OrderedXEvent<T1, T2>.OrderedXEvent() -> void
+Xpand.Events.OrderedXEvent<T>
+Xpand.Events.OrderedXEvent<T>.Invoke(T value) -> void
+Xpand.Events.OrderedXEvent<T>.OrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent
+Xpand.Events.SafeOrderedXEvent.Invoke() -> void
+Xpand.Events.SafeOrderedXEvent.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14, T15 value15, T16 value16) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14, T15 value15) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7, T8>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6, T7>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5, T6>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4, T5>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3, T4>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3>
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3>.Invoke(T1 value1, T2 value2, T3 value3) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2, T3>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2>
+Xpand.Events.SafeOrderedXEvent<T1, T2>.Invoke(T1 value1, T2 value2) -> void
+Xpand.Events.SafeOrderedXEvent<T1, T2>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeOrderedXEvent<T>
+Xpand.Events.SafeOrderedXEvent<T>.Invoke(T value) -> void
+Xpand.Events.SafeOrderedXEvent<T>.SafeOrderedXEvent() -> void
+Xpand.Events.SafeXEvent
+Xpand.Events.SafeXEvent.Invoke() -> void
+Xpand.Events.SafeXEvent.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14, T15 value15, T16 value16) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14, T15 value15) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7, T8>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6, T7>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5, T6>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4, T5>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4>
+Xpand.Events.SafeXEvent<T1, T2, T3, T4>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3, T4>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2, T3>
+Xpand.Events.SafeXEvent<T1, T2, T3>.Invoke(T1 value1, T2 value2, T3 value3) -> void
+Xpand.Events.SafeXEvent<T1, T2, T3>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T1, T2>
+Xpand.Events.SafeXEvent<T1, T2>.Invoke(T1 value1, T2 value2) -> void
+Xpand.Events.SafeXEvent<T1, T2>.SafeXEvent() -> void
+Xpand.Events.SafeXEvent<T>
+Xpand.Events.SafeXEvent<T>.Invoke(T value) -> void
+Xpand.Events.SafeXEvent<T>.SafeXEvent() -> void
+Xpand.Events.XEvent
+Xpand.Events.XEvent.Invoke() -> void
+Xpand.Events.XEvent.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14, T15 value15, T16 value16) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14, T15 value15) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8, T9>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7, T8>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6, T7>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5, T6>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5>
+Xpand.Events.XEvent<T1, T2, T3, T4, T5>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4, T5>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3, T4>
+Xpand.Events.XEvent<T1, T2, T3, T4>.Invoke(T1 value1, T2 value2, T3 value3, T4 value4) -> void
+Xpand.Events.XEvent<T1, T2, T3, T4>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2, T3>
+Xpand.Events.XEvent<T1, T2, T3>.Invoke(T1 value1, T2 value2, T3 value3) -> void
+Xpand.Events.XEvent<T1, T2, T3>.XEvent() -> void
+Xpand.Events.XEvent<T1, T2>
+Xpand.Events.XEvent<T1, T2>.Invoke(T1 value1, T2 value2) -> void
+Xpand.Events.XEvent<T1, T2>.XEvent() -> void
+Xpand.Events.XEvent<T>
+Xpand.Events.XEvent<T>.Invoke(T value) -> void
+Xpand.Events.XEvent<T>.XEvent() -> void
+Xpand.Events.XEventLogger
+Xpand.Events.XEventLogger.ExceptionDelegate
+Xpand.Events.XEventLogger.MessageDelegate
+Xpand.Events.XpandEventsConfig
+~static readonly Xpand.Events.EventArgs.Empty -> Xpand.Events.EventArgs
+~static Xpand.Events.XEventLogger.Log(object message) -> void
+~static Xpand.Events.XEventLogger.LogException(System.Exception exception) -> void
+~static Xpand.Events.XEventLogger.LogWarning(object message) -> void
+~Xpand.Events.BaseEvent<T>
+~Xpand.Events.BaseEvent<T>.AddListener(T listener) -> bool
+~Xpand.Events.BaseEvent<T>.Contains(T listener) -> bool
+~Xpand.Events.BaseEvent<T>.GetImmutableSubscriptionArray() -> T[]
+~Xpand.Events.BaseEvent<T>.RemoveListener(T listener) -> bool
+~Xpand.Events.BaseOrderedEvent<T>
+~Xpand.Events.BaseOrderedEvent<T>.AddListener(T listener, int priority = 0) -> bool
+~Xpand.Events.BaseOrderedEvent<T>.Contains(T listener) -> bool
+~Xpand.Events.BaseOrderedEvent<T>.GetImmutableSubscriptionArray() -> T[]
+~Xpand.Events.BaseOrderedEvent<T>.RemoveListener(T listener) -> bool

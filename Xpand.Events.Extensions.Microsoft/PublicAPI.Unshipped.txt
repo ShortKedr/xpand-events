@@ -1,0 +1,30 @@
+#nullable enable
+static Xpand.Events.Extensions.Microsoft.SignalChannelExtensions.PumpToAsync<T>(this System.Threading.Channels.ChannelReader<T>! reader, Xpand.Events.Async.AsyncSignal<T>! signal) -> System.Threading.Tasks.Task!
+static Xpand.Events.Extensions.Microsoft.SignalChannelExtensions.PumpToAsync<T>(this System.Threading.Channels.ChannelReader<T>! reader, Xpand.Events.Async.AsyncSignal<T>! signal, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+static Xpand.Events.Extensions.Microsoft.SignalChannelExtensions.PumpToAsync<T>(this System.Threading.Channels.ChannelReader<T>! reader, Xpand.Events.Signal<T>! signal) -> System.Threading.Tasks.Task!
+static Xpand.Events.Extensions.Microsoft.SignalChannelExtensions.PumpToAsync<T>(this System.Threading.Channels.ChannelReader<T>! reader, Xpand.Events.Signal<T>! signal, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+static Xpand.Events.Extensions.Microsoft.SignalChannelExtensions.SubscribeTo<T>(this Xpand.Events.Async.AsyncSignal<T>! signal, System.Threading.Channels.ChannelWriter<T>! writer) -> System.IDisposable!
+static Xpand.Events.Extensions.Microsoft.SignalChannelExtensions.SubscribeTo<T>(this Xpand.Events.Async.AsyncSignal<T>! signal, System.Threading.Channels.ChannelWriter<T>! writer, int priority) -> System.IDisposable!
+static Xpand.Events.Extensions.Microsoft.SignalChannelExtensions.SubscribeTo<T>(this Xpand.Events.Signal<T>! signal, System.Threading.Channels.ChannelWriter<T>! writer) -> System.IDisposable!
+static Xpand.Events.Extensions.Microsoft.SignalChannelExtensions.SubscribeTo<T>(this Xpand.Events.Signal<T>! signal, System.Threading.Channels.ChannelWriter<T>! writer, int priority) -> System.IDisposable!
+static Xpand.Events.Extensions.Microsoft.SignalDiagnosticsExtensions.PublishWithDiagnostics<T>(this Xpand.Events.Signal<T>! signal, T payload, Xpand.Events.Extensions.Microsoft.SignalDiagnostics! diagnostics) -> void
+static Xpand.Events.Extensions.Microsoft.SignalLoggingExtensions.ToAsyncSignalOptions(this Microsoft.Extensions.Logging.ILogger! logger, Microsoft.Extensions.Logging.LogLevel level = Microsoft.Extensions.Logging.LogLevel.Error) -> Xpand.Events.Async.AsyncSignalOptions!
+static Xpand.Events.Extensions.Microsoft.SignalLoggingExtensions.ToSignalOptions(this Microsoft.Extensions.Logging.ILogger! logger, Microsoft.Extensions.Logging.LogLevel level = Microsoft.Extensions.Logging.LogLevel.Error) -> Xpand.Events.SignalOptions!
+static Xpand.Events.Extensions.Microsoft.SignalObservableExtensions.AsObservable<T>(this Xpand.Events.Signal<T>! signal, int priority = 0) -> System.IObservable<T>!
+static Xpand.Events.Extensions.Microsoft.SignalServiceCollectionExtensions.AddAsyncSignal<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Xpand.Events.Extensions.Microsoft.SignalServiceCollectionExtensions.AddAsyncSignal<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.DependencyInjection.ServiceLifetime lifetime) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Xpand.Events.Extensions.Microsoft.SignalServiceCollectionExtensions.AddAsyncSignal<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Xpand.Events.Async.AsyncSignalOptions! options) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Xpand.Events.Extensions.Microsoft.SignalServiceCollectionExtensions.AddAsyncSignal<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Xpand.Events.Async.AsyncSignalOptions! options, Microsoft.Extensions.DependencyInjection.ServiceLifetime lifetime) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Xpand.Events.Extensions.Microsoft.SignalServiceCollectionExtensions.AddSignal<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Xpand.Events.Extensions.Microsoft.SignalServiceCollectionExtensions.AddSignal<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.DependencyInjection.ServiceLifetime lifetime) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Xpand.Events.Extensions.Microsoft.SignalServiceCollectionExtensions.AddSignal<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Xpand.Events.SignalOptions! options) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Xpand.Events.Extensions.Microsoft.SignalServiceCollectionExtensions.AddSignal<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Xpand.Events.SignalOptions! options, Microsoft.Extensions.DependencyInjection.ServiceLifetime lifetime) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+Xpand.Events.Extensions.Microsoft.SignalChannelExtensions
+Xpand.Events.Extensions.Microsoft.SignalDiagnostics
+Xpand.Events.Extensions.Microsoft.SignalDiagnostics.ActivitySource.get -> System.Diagnostics.ActivitySource!
+Xpand.Events.Extensions.Microsoft.SignalDiagnostics.Dispose() -> void
+Xpand.Events.Extensions.Microsoft.SignalDiagnostics.SignalDiagnostics(string! sourceName, bool metricsEnabled = false, string? version = null) -> void
+Xpand.Events.Extensions.Microsoft.SignalDiagnosticsExtensions
+Xpand.Events.Extensions.Microsoft.SignalLoggingExtensions
+Xpand.Events.Extensions.Microsoft.SignalObservableExtensions
+Xpand.Events.Extensions.Microsoft.SignalServiceCollectionExtensions

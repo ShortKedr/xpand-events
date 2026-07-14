@@ -1,0 +1,22 @@
+{
+  "name": "Xpand.Events.Unity.Editor.Tests",
+  "rootNamespace": "Xpand.Events.Unity.Tests",
+  "references": [
+    "Xpand.Events.Core",
+    "Xpand.Events.Unity"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

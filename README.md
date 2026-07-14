@@ -1,13 +1,73 @@
 # Xpand Events
-.NET weak event library. Alternative for default events. Part of Xpand project
+
+Xpand Events is an experimental in-process signal library for .NET and Unity.
+The prerelease packages are not yet production-ready; the legacy `XEvent`
+implementation remains a compatibility prototype.
+
+## Current limitations
+
+- Subscriptions keep strong references to delegates. This is not a weak-event
+  implementation, and subscribers must be removed explicitly when appropriate.
+- The legacy `XEvent` families are not thread-safe and retain global logging and
+  configuration. The new `Signal` API is thread-safe and uses per-instance
+  options.
+- Synchronous signals do not support `async void` listeners. Sequential
+  `ValueTask` handlers are available only through the optional prerelease
+  `Xpand.Events.Async` package.
+- The legacy NuGet DLL is not a Unity integration. The prerelease UPM package has
+  local Unity 6000.3 Edit/Play Mode, Mono, IL2CPP, Android-build, and WebGL-build
+  validation; clean CI, device/browser runtime, and Git-tag installation are
+  still pending.
+
+The planned production contract and the work required to reach it are tracked in
+[ROADMAP.md](ROADMAP.md).
+
+The exact behavior of the existing `XEvent` API is documented in
+[Current legacy event semantics](docs/legacy-semantics.md).
+
+The new prerelease `Signal<T>` API is documented in
+[Signal contract](docs/signal-contract.md). It provides strong disposable
+subscriptions, stable priorities, thread-safe snapshot publishing, explicit
+per-instance exception behavior, and scoped suspension. These guarantees apply
+to `Signal` and `Signal<T>`, not to the legacy `XEvent` families.
+
+Sequential `ValueTask` handlers are available in the separate prerelease
+`Xpand.Events.Async` package and documented in the
+[async signal contract](docs/async-signal-contract.md).
+
+Optional DI, logging, activities, and metrics are documented in
+[Microsoft extensions](docs/microsoft-extensions.md).
+
+Framework-neutral probes are documented in
+[Testing helpers](docs/testing-helpers.md).
+
+Reproducible .NET and Unity Player snapshots are recorded in the
+[Performance and allocation baseline](docs/performance-baseline.md).
+
+The exact tested matrix and servicing rules are defined in the
+[Support policy](docs/support-policy.md).
+
+Optional ownership and lifecycle diagnostics are documented in
+[Analyzers](docs/analyzers.md). Runnable worker, desktop, and bounded-channel
+examples are listed in [Integration samples](docs/integration-samples.md).
+
+Signals and their adapters are process-local. See
+[Delivery boundaries](docs/delivery-boundaries.md) before integrating with a
+durable queue, broker, or transactional outbox.
+
+See [Migrating from XEvent to Signal](docs/migration-xevent-to-signal.md) and the
+[versioning and deprecation policy](docs/versioning.md) when adopting the new
+package. The [strong-name decision](docs/decisions/0001-strong-name-policy.md)
+documents why prerelease assemblies are currently unsigned.
 
 # Xpand-Project links
-- [Xpand-Events](https://github.com/ShortKedr-OpenSource/xpand-events)
+- [Xpand-Events](https://github.com/ShortKedr/xpand-events)
 
 # Summary
 
 # Table of contents
  * [Requirements](#requirements)
+ * [Current legacy semantics](docs/legacy-semantics.md)
  * [Hot to use](#how-to-use)
  * [Event usage patterns](#event-usage-patterns)
    * [Implicit pattern](#implicit-pattern)
@@ -27,7 +87,7 @@
 # <a id="requirements"></a>Requirements
 * **Min language version:** C# 8.0;  
 * **Recomended language version**: C# 9.0;  
-* **Target Framework versions:** .NET Standard 2.0, .NET Framework 4.7.1;  
+* **Target Framework versions:** .NET Standard 2.0 and .NET 8.0.
 
 With C# 9.0 you will able to use `record` events. Record events moved to different project, that requires C# 9.0 support
 
@@ -60,67 +120,42 @@ There will be some useful info soon
  
  
 # <a id="performance"></a>Performance
-Source code for benchmark presented in `Xpand.Events.Benchmark` project.  
 
-WARNING! There is a big chance current benchmark presents non-end and not clear results, since it's not well researched yet and dont present end state of project. So, follow the project to get updates about this state in future.
+`Xpand.Events.Benchmark` contains a BenchmarkDotNet dispatch benchmark with
+`MemoryDiagnoser`, static no-op handlers, fixed setup state, and a standard .NET
+event baseline. No benchmark result is published here until the supported
+platform matrix has been measured reproducibly.
 
-There are lastest benchmark results:
+Run it with:
 
-### Event Invoke:
-
-``` ini
-BenchmarkDotNet=v0.13.2, OS=Windows 10 (10.0.19044.1889/21H2/November2021Update)
-Intel Core i5-9300H CPU 2.40GHz, 1 CPU, 8 logical and 4 physical cores
-.NET SDK=5.0.410
-  [Host]     : .NET 5.0.17 (5.0.1722.21314), X64 RyuJIT AVX2
-  Job-HEUXOK : .NET 5.0.17 (5.0.1722.21314), X64 RyuJIT AVX2
-
-MaxAbsoluteError=1.0000 ms  MaxRelativeError=0.009999999776482582
+```shell
+dotnet run --project Xpand.Events.Benchmark -c Release
 ```
 
-|                       Method | Listeners |         Mean |        Ratio |
-|----------------------------- |---------- |-------------:|-------------:|
-|     `DefaultEvent?.Invoke()` |        10 |     129.0 ns |     baseline |
-|            `XEvent.Invoke()` |        10 |     119.1 ns | 1.09x faster |
-|        `SafeXEvent.Invoke()` |        10 |     142.2 ns | 1.10x slower |
-|     `OrderedXEvent.Invoke()` |        10 |     144.9 ns | 1.12x slower |
-| `OrderedSafeXEvent.Invoke()` |        10 |     154.5 ns | 1.20x slower |
-|                              |           |              |              |
-|     `DefaultEvent?.Invoke()` |        50 |     904.0 ns |     baseline |
-|            `XEvent.Invoke()` |        50 |     946.6 ns | 1.05x slower |
-|        `SafeXEvent.Invoke()` |        50 |   1,007.5 ns | 1.11x slower |
-|     `OrderedXEvent.Invoke()` |        50 |     981.5 ns | 1.09x slower |
-| `OrderedSafeXEvent.Invoke()` |        50 |     990.4 ns | 1.10x slower |
-|                              |           |              |              |
-|     `DefaultEvent?.Invoke()` |       100 |   1,843.7 ns |     baseline |
-|            `XEvent.Invoke()` |       100 |   1,906.3 ns | 1.03x slower |
-|        `SafeXEvent.Invoke()` |       100 |   2,065.9 ns | 1.12x slower |
-|     `OrderedXEvent.Invoke()` |       100 |   1,932.7 ns | 1.05x slower |
-| `OrderedSafeXEvent.Invoke()` |       100 |   1,992.9 ns | 1.08x slower |
-|                              |           |              |              |
-|     `DefaultEvent?.Invoke()` |      1000 |  20,792.1 ns |     baseline |
-|            `XEvent.Invoke()` |      1000 |  21,057.6 ns | 1.01x slower |
-|        `SafeXEvent.Invoke()` |      1000 |  22,896.4 ns | 1.10x slower |
-|     `OrderedXEvent.Invoke()` |      1000 |  21,048.6 ns | 1.01x slower |
-| `OrderedSafeXEvent.Invoke()` |      1000 |  21,947.2 ns | 1.06x slower |
-|                              |           |              |              |
-|     `DefaultEvent?.Invoke()` |     10000 | 235,524.5 ns |     baseline |
-|            `XEvent.Invoke()` |     10000 | 236,681.6 ns | 1.00x slower |
-|        `SafeXEvent.Invoke()` |     10000 | 247,938.3 ns | 1.05x slower |
-|     `OrderedXEvent.Invoke()` |     10000 | 232,189.5 ns | 1.01x faster |
-| `OrderedSafeXEvent.Invoke()` |     10000 | 261,601.9 ns | 1.11x slower |
+# <a id="migrating"></a>Migrating from legacy events
 
-### Subscribe:
-There will listener subscribe benchmark soon
-
-# <a id="migrating"></a>Migrating from default events
-There will be some useful info soon
+Use the step-by-step [XEvent to Signal migration guide](docs/migration-xevent-to-signal.md).
 
 # <a id="async-use"></a>Async usage
-There will be some useful info soon
+
+`Signal` and `Signal<T>` are synchronous and invoke delegates on the publishing
+thread. Do not register `async void` listeners. The separate prerelease
+`Xpand.Events.Async` package provides sequential `ValueTask` dispatch,
+`CancellationToken`, and explicit fail-fast or report-and-continue policies; see
+the [async signal contract](docs/async-signal-contract.md).
 
 # <a id="multithreading"></a>Multithreading
-There will be some useful info soon
+
+`Signal` and `Signal<T>` subscribe, dispose, publish, clear, and suspend operations
+are thread-safe. Handlers execute synchronously on the publishing thread. The
+legacy `XEvent` API is not thread-safe; external synchronization is required when
+an instance is accessed by more than one thread.
 
 # <a id="use-with-unity"></a>Use with Unity Engine
-There will be some useful info soon
+
+The prerelease package is under `unity/com.xpand.events` and contains Core,
+lifecycle helpers, a main-thread dispatcher, ScriptableObject channels, samples,
+and Edit/Play Mode tests. See its
+[Unity documentation](unity/com.xpand.events/Documentation~/index.md) for the
+exact verified matrix and remaining limitations. Do not infer support for an
+unlisted Unity version or platform.
