@@ -33,6 +33,11 @@ metadata to `1.0.0`, and create the stable tag. The release workflow must build
 once, publish those exact artifacts to NuGet, create the matching UPM tag/release,
 and attach checksums/SBOMs. Do not publish first and tag later.
 
+Run `scripts/test-stable-upgrade.sh` and follow
+[`upgrading-1.0.md`](upgrading-1.0.md) first with local candidate artifacts, then
+repeat the consumer check with the published RC and exact proposed stable
+artifacts.
+
 ## Verification and rollback
 
 - Install each NuGet package from NuGet.org into a clean consumer and install UPM

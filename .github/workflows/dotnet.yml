@@ -70,6 +70,9 @@ jobs:
     - name: Verify release preparation
       run: bash scripts/test-prepare-release.sh
 
+    - name: Verify RC-to-stable upgrade
+      run: bash scripts/test-stable-upgrade.sh
+
     - name: Publish trimmed smoke test
       run: dotnet publish smoke/Xpand.Events.TrimSmokeTest/Xpand.Events.TrimSmokeTest.csproj --configuration Release --runtime linux-x64 --self-contained true --output artifacts/trimmed
 

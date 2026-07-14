@@ -287,7 +287,10 @@ Exit criteria:
 
 - no unresolved critical correctness, lifecycle, threading, AOT, or packaging issue;
 - documented support matrix is continuously verified by CI;
-- upgrade from the latest prerelease is documented and tested;
+- upgrade from the latest prerelease is documented and tested. The local
+  all-package transition is covered by `scripts/test-stable-upgrade.sh` and
+  `docs/upgrading-1.0.md`; the exact published-artifact repetition remains a
+  stable-release gate;
 - release artifacts are reproducible and traceable to a signed/tagged commit.
 
 ## Work priority
