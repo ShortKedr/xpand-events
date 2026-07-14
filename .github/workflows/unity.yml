@@ -21,7 +21,7 @@ jobs:
       PROJECT: ${{ github.workspace }}/unity/ValidationProject
       RESULTS: ${{ runner.temp }}/xpand-events-unity
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Edit Mode tests
         run: >-
@@ -75,7 +75,7 @@ jobs:
 
       - name: Upload Unity logs and test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: unity-6000.3-validation
           path: ${{ runner.temp }}/xpand-events-unity*

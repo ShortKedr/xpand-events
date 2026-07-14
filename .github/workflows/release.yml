@@ -29,12 +29,12 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 8.0.x
 
@@ -146,7 +146,7 @@ jobs:
         sbom-path: artifacts/sbom/Xpand.Events.Analyzers/Xpand.Events.Analyzers.cdx.json
 
     - name: Upload package
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: release-packages
         path: |
@@ -164,13 +164,13 @@ jobs:
 
     steps:
     - name: Download package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: release-packages
         path: artifacts
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 8.0.x
 
@@ -192,7 +192,7 @@ jobs:
 
     steps:
     - name: Download release artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: release-packages
         path: artifacts
