@@ -12,7 +12,9 @@ are immutable; never rebuild or replace an existing version.
 3. Run clean restore, Release build, all .NET tests, pack, NuGet audit, trimming,
    Native AOT, and all supported integration samples.
 4. Run Unity import, Edit Mode, both Play Mode domain-reload configurations,
-   supported player builds/runtime smokes, and allocation validation.
+   supported player builds/runtime smokes, and allocation validation. Follow the
+   dedicated ephemeral runner contract in
+   [`unity-ci-runner.md`](unity-ci-runner.md) for external CI.
 5. Inspect every `.nupkg`, `.snupkg`, and package-specific SBOM. Confirm Core has
    no runtime dependency and analyzer compiler dependencies are private.
 6. Run adoption in one real Unity project and one non-Unity application; record

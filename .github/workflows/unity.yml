@@ -16,8 +16,14 @@ concurrency:
   group: unity-validation-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   unity-6000-3:
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name == github.repository
     runs-on: [self-hosted, macOS, ARM64, unity-6000.3]
     timeout-minutes: 90
     env:
@@ -26,6 +32,8 @@ jobs:
       RESULTS: ${{ github.workspace }}/artifacts/xpand-events-unity
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Prepare results directory
         run: mkdir -p "$(dirname "$RESULTS")"
