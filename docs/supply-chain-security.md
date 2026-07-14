@@ -47,5 +47,11 @@ must be resolved before 1.0 publication and documented as an assembly/package
 operations decision; signatures must never be added after publication by
 rebuilding the same immutable version.
 
-The first external workflow run and attestation verification remain pending
-until a release tag is authorized and pushed.
+The non-publishing Release dry-run
+[29330123393](https://github.com/ShortKedr/xpand-events/actions/runs/29330123393)
+completed on 2026-07-14. It generated all six package SBOMs, provenance for the
+NuGet/symbol/UPM artifacts, and package-specific SBOM attestations. Downloaded
+Core and UPM artifacts passed `gh attestation verify` with the signer restricted
+to `.github/workflows/release.yml` and the source ref restricted to the RC
+branch. The Core CycloneDX predicate was also verified independently. A tag run
+must repeat this verification for the exact immutable release artifacts.

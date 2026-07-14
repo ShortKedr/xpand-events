@@ -270,8 +270,12 @@ Goal: freeze a supportable public contract and production release process.
 - [x] Publish performance and allocation baselines for .NET and Unity Player.
 - [x] Define supported .NET and Unity version policy.
 - [x] Add dependency review, vulnerability scanning, SBOM, provenance, and package
-      signing as appropriate for public distribution. NuGet audit passed locally;
-      the first external SBOM/provenance attestation awaits an authorized tag.
+      signing as appropriate for public distribution. NuGet audit passed locally
+      and in PR checks. Non-publishing Release run
+      [29330123393](https://github.com/ShortKedr/xpand-events/actions/runs/29330123393)
+      generated all package SBOM/provenance attestations; downloaded Core and UPM
+      artifacts passed identity-restricted verification. The authorized tag must
+      repeat this for the immutable release artifacts.
 - [x] Add contribution, security, support, and release documentation.
 - [x] Automate changelog, package, UPM tag, NuGet, and GitHub release creation.
       Workflows are configured; their first authorized tag run remains pending.

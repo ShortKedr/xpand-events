@@ -18,9 +18,13 @@ are immutable; never rebuild or replace an existing version.
 6. Run adoption in one real Unity project and one non-Unity application; record
    project/version, platform, result, and owner approval without committing
    proprietary consumer content.
-7. Merge the preparation PR, let required CI finish, and create an annotated
+7. Dispatch the `Release` workflow with the RC version from the reviewed branch.
+   Confirm its non-publishing build, pack, SBOM, provenance, and artifact upload
+   jobs pass; verify downloaded Core and UPM artifacts with `gh attestation
+   verify` restricted to the release workflow and source ref.
+8. Merge the preparation PR, let required CI finish, and create an annotated
    `v1.0.0-rc.N` tag only after all required checks are green.
-8. The tag workflow builds NuGet/UPM artifacts once, publishes NuGet packages,
+9. The tag workflow builds NuGet/UPM artifacts once, publishes NuGet packages,
    and creates the GitHub release. Verify provenance and SBOM attestations with
    `gh attestation verify`,
    then approve the protected NuGet environment.
