@@ -20,10 +20,10 @@ The Core package used by the .NET consumer had SHA-256
 The sorted file-hash manifest for the UPM snapshot had SHA-256
 `8c66ebf5b2ef73fa5da9cffc57a487b1d150e197410382c2c2015302bc03a81c`.
 
-This candidate was built from the current uncommitted worktree based on commit
-`12d81f33737f292a59f34f28d349d3cb6bb9706a`. These local hashes identify the
-tested artifacts, but do not replace the signed/tagged provenance required for a
-public release.
+The tested package source snapshot is contained in commit
+`2231e54d5a664fa6ba6ed0debf4461df44e3e8f7`. These local hashes identify the
+adoption artifacts, but do not replace the signed/tagged provenance required for
+a public release.
 
 ### Non-Unity .NET application
 
@@ -54,8 +54,10 @@ public release.
 
 ## Remaining release gates
 
-Adoption does not authorize publication. Before `1.0.0`, the exact committed and
-tagged candidate must pass the GitHub-hosted Windows/macOS/Linux matrix, produce
-traceable provenance and SBOM attestations, and be verified from its published
-NuGet and Git-tag UPM locations. Upgrade from that exact prerelease to the stable
-package must also be documented and tested.
+The source commit passed the GitHub-hosted Windows/macOS/Linux matrix, including
+pack, trimming, and Native AOT, in
+[run 29328845212](https://github.com/ShortKedr/xpand-events/actions/runs/29328845212).
+Adoption does not authorize publication. Before `1.0.0`, the exact signed/tagged
+candidate must produce traceable provenance and SBOM attestations and be verified
+from its published NuGet and Git-tag UPM locations. Upgrade from that exact
+prerelease to the stable package must also be documented and tested.

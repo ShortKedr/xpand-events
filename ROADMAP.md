@@ -115,10 +115,11 @@ Goal: make the existing repository honest, reproducible, and safe to evolve.
 - [x] Add regression tests for all known correctness defects.
 - [x] Update the test project to a supported .NET target and current test packages.
 - [x] Remove `TransformOnBuild` and T4 from the normal build/pack path.
-- [ ] Make `dotnet restore`, `build`, `test`, and `pack` complete on Windows, macOS,
-      and Linux CI. The matrix workflow is implemented; its first GitHub-hosted
-      run is still pending. As of 2026-07-14, the remote repository exposes only
-      an obsolete failed `.NET` run from 2025; the current matrix is not pushed.
+- [x] Make `dotnet restore`, `build`, `test`, and `pack` complete on Windows,
+      macOS, and Linux CI. Run
+      [29328845212](https://github.com/ShortKedr/xpand-events/actions/runs/29328845212)
+      passed on 2026-07-14 for commit `2231e54`, including package upload,
+      trimming, Native AOT, and release-preparation regression validation.
 - [x] Fix package versioning, license metadata, README inclusion, symbols, and the
       release artifact filename.
 - [x] Replace obsolete GitHub Actions and remove hard-coded external package feed
